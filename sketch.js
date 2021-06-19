@@ -1,5 +1,4 @@
 function make2DArray(cols, rows) {
-  console.log("This is cols", cols)
   let arr = new Array(cols);
   for (let i = 0; i < arr.length; i++) {
     arr[i] = new Array(rows);
@@ -10,10 +9,10 @@ function make2DArray(cols, rows) {
 let grid;
 let cols;
 let rows;
-let resolution = 5;  //change the resolution
-let fr = 120          //change the fps
+let resolution = 5; //change the resolution
+let fr = 120; //change the fps
 function setup() {
-  canvas.width  = window.innerWidth;
+  canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
   c = createCanvas(w, h);
   cols = floor(w / resolution);
@@ -26,21 +25,25 @@ function setup() {
     }
   }
 }
-function randomNumber(min, max) { 
+function randomNumber(min, max) {
   return Math.floor(Math.random() * (max - min) + min);
-} 
+}
 var w = window.innerWidth;
-var h = window.innerHeight; 
+var h = window.innerHeight;
 function draw() {
-  background(200,0,255);
+  background(200, 0, 255);
   frameRate(fr);
   for (let i = 0; i < cols; i++) {
     for (let j = 0; j < rows; j++) {
       let x = i * resolution;
       let y = j * resolution;
       if (grid[i][j] == 1) {
-        fill(randomNumber(0,255),randomNumber(0,255),randomNumber(0,255));
-        stroke(randomNumber(0,255),randomNumber(0,255),randomNumber(0,255));
+        fill(randomNumber(0, 255), randomNumber(0, 255), randomNumber(0, 255));
+        stroke(
+          randomNumber(0, 255),
+          randomNumber(0, 255),
+          randomNumber(0, 255)
+        );
         rect(x, y, resolution - 1, resolution - 1);
       }
     }
@@ -80,4 +83,8 @@ function countNeighbors(grid, x, y) {
   }
   sum -= grid[x][y];
   return sum;
+}
+
+function mouseClicked() {
+  console.log("Clicked");
 }
